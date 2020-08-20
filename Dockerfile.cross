@@ -10,11 +10,11 @@ RUN __DEPENDENCIES__
 
 ENV PKG_CACHE_PATH=/fetched
 
-RUN git clone -b patch-1 --single-branch https://github.com/n1ru4l/pkg-fetch.git /build
+RUN git clone -b fork --single-branch https://github.com/n1ru4l/pkg-fetch.git /build
 WORKDIR /build
 RUN yarn && yarn run babel
 RUN mkdir -p /fetched
 
-RUN yarn run bin ${PKG_NODE} ${PKG_OS} ${PKG_ARCH}
+RUN MAKE_JOB_COUNT=2 yarn run bin ${PKG_NODE} ${PKG_OS} ${PKG_ARCH}
 
 CMD ["sh"]
