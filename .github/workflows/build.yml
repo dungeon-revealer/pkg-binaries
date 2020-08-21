@@ -6,15 +6,14 @@ on:
 
 jobs:
   apk:
-    runs-on: self-hosted
-    timeout-minutes: 3000
+    timeout-minutes: 360
     if: github.actor == 'n1ru4l' && github.event.issue.url == 'https://api.github.com/repos/dungeon-revealer/pkg-binaries/issues/1'
     steps:
       - uses: actions/checkout@v2
       - uses: crazy-max/ghaction-docker-buildx@v1
 
       - name: "Build ${{ github.event.comment.body }}"
-        timeout-minutes: 3000
+        timeout-minutes: 360
         id: build
         run: |
           chmod +x build.sh
