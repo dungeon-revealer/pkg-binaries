@@ -16,6 +16,7 @@ jobs:
         timeout-minutes: 360
         id: build
         run: |
+          sudo apt-get install -y rename
           chmod +x build.sh
           ./build.sh ${{ github.event.comment.body }}
           FETCHED=$(ls | grep fetched)
